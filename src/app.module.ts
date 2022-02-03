@@ -6,13 +6,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import config from './config/keys';
 
 @Module({
-  imports: [ UsersModule , MongooseModule.forRoot(config.mongoURI)],
+  imports: [UsersModule, MongooseModule.forRoot(config.mongoURI)],
 })
-
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply( logger )
-      .forRoutes(UsersController);
+    consumer.apply(logger).forRoutes(UsersController);
   }
 }
